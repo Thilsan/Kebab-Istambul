@@ -1,65 +1,130 @@
-import Image from "next/image";
+const menuItems = [
+  {
+    id: 1,
+    name: "1/2 Chicken",
+    description: "Con patata con bebida",
+    price: "10.95",
+  },
+  {
+    id: 2,
+    name: "Chicken Karry",
+    description: "With pilow rice, soft drink",
+    price: "13.95",
+  },
+  {
+    id: 3,
+    name: "Chicken Tikka Masolla",
+    description: null,
+    price: "13.95",
+  },
+  {
+    id: 4,
+    name: "Fish and Chips",
+    description: "With drinks",
+    price: "12.95",
+  },
+  {
+    id: 5,
+    name: "Seekh Kebab",
+    description: "With rice or chips or salad (any one) – with drinks",
+    price: "10.95",
+  },
+  {
+    id: 6,
+    name: "FriKandel",
+    description: "With chips and salad, with drinks",
+    price: "11.95",
+  },
+  {
+    id: 7,
+    name: "Chicken Finger",
+    description: "With rice and salad, drinks",
+    price: "10.95",
+  },
+  {
+    id: 8,
+    name: "Fry Chicken",
+    description: "With drinks – with salad, chips",
+    price: "11.95",
+  },
+  {
+    id: 9,
+    name: "Onion Bazi",
+    description: "Tortilla de Cebolla",
+    price: "4.95",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <header className="bg-white pt-8 pb-4 px-4 text-center">
+        <div className="flex items-center justify-center gap-2 mb-1">
+          <span className="text-[#c8a45a] text-lg">❧</span>
+          <span className="text-[#c8a45a] text-xs tracking-[0.3em] uppercase font-medium">
+            Kebab Istambul
+          </span>
+          <span className="text-[#c8a45a] text-lg">❧</span>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <h1 className="text-[#c0392b] text-6xl font-black tracking-widest uppercase leading-none">
+          MENU
+        </h1>
+        <div className="flex items-center justify-center gap-2 mt-1">
+          <div className="h-px w-12 bg-[#c8a45a]" />
+          <span className="text-[#c8a45a] text-sm">✦</span>
+          <div className="h-px w-12 bg-[#c8a45a]" />
         </div>
+      </header>
+
+      {/* Menu Items */}
+      <main className="px-4 pb-10 max-w-lg mx-auto">
+        <ul className="space-y-0">
+          {menuItems.map((item) => (
+            <li key={item.id}>
+              <div className="flex items-start gap-3 py-4">
+                {/* Number badge */}
+                <div className="flex-shrink-0 w-8 h-8 rounded-full border-2 border-[#c0392b] flex items-center justify-center mt-0.5">
+                  <span className="text-[#c0392b] text-sm font-bold leading-none">
+                    {item.id}
+                  </span>
+                </div>
+
+                {/* Name + description */}
+                <div className="flex-1 min-w-0">
+                  <p className="text-gray-900 font-semibold text-base leading-snug">
+                    {item.name}
+                  </p>
+                  {item.description && (
+                    <p className="text-zinc-500 text-sm leading-snug mt-0.5">
+                      {item.description}
+                    </p>
+                  )}
+                </div>
+
+                {/* Price */}
+                <div className="flex-shrink-0 text-right">
+                  <span className="text-[#c8a45a] font-bold text-lg leading-snug">
+                    {item.price}
+                    <span className="text-[#c8a45a] text-base font-normal">
+                      £
+                    </span>
+                  </span>
+                </div>
+              </div>
+              {/* Divider */}
+              {item.id < menuItems.length && (
+                <div className="border-b border-dashed border-zinc-300" />
+              )}
+            </li>
+          ))}
+        </ul>
       </main>
+
+      {/* Footer */}
+      <footer className="text-center pb-8 text-zinc-400 text-xs tracking-wide">
+        All meals include a soft drink unless stated otherwise
+      </footer>
     </div>
   );
 }
