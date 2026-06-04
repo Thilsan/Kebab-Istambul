@@ -20,7 +20,43 @@
 }
 
 body {
-  background: var(--background);
+  background: radial-gradient(ellipse at top, #1a0a00 0%, #0d0000 40%, #000000 100%);
+  min-height: 100vh;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Hide scrollbar on tab nav but keep scroll */
+.tab-nav {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  background: linear-gradient(180deg, #1c0800 0%, #0d0000 100%);
+  border-top: 1px solid rgba(200,164,90,0.3);
+  border-bottom: 1px solid rgba(0,0,0,0.8);
+  box-shadow: 0 -1px 0 rgba(255,255,255,0.05) inset,
+              0 4px 16px rgba(0,0,0,0.6),
+              0 1px 0 rgba(200,164,90,0.1) inset;
+}
+.tab-nav::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+.menu-img {
+  animation: float 3.5s ease-in-out infinite;
+  filter: brightness(0.92) drop-shadow(0 10px 12px rgba(192, 57, 43, 0.62));
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.menu-img:hover {
+  animation-play-state: paused;
+  transform: scale(1.08) translateY(-4px);
+  filter: brightness(0.95) drop-shadow(0 12px 14px rgba(192, 57, 43, 0.8));
 }
