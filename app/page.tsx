@@ -174,7 +174,7 @@ export default function Home() {
 
       {/* Sticky Category Nav — between MENU title and food items */}
       <nav className="tab-nav sticky top-0 z-50 overflow-x-auto mt-4">
-        <div className="flex gap-1 px-2 py-2 w-max">
+        <div className="flex gap-1 sm:gap-2 px-2 sm:px-4 py-2 sm:py-3 w-max sm:w-full sm:justify-center">
           {[
             { emoji: "🍽️", label: "Specials", href: "#specials" },
             { emoji: "🌯", label: "Rollo", href: "#rollo-kebab" },
@@ -188,14 +188,14 @@ export default function Home() {
             <a
               key={tab.href}
               href={tab.href}
-              className="shrink-0 flex flex-col items-center gap-0.5 px-3 py-2 rounded-xl transition-all duration-100 active:translate-y-0.5 active:brightness-125"
+              className="shrink-0 flex flex-col items-center gap-1 px-3 py-2 sm:px-6 sm:py-3 rounded-xl sm:rounded-2xl transition-all duration-100 active:translate-y-0.5 active:brightness-125"
               style={{
                 background: "linear-gradient(180deg, #2a2a2a 0%, #151515 100%)",
                 boxShadow: "0 3px 0 rgba(0,0,0,0.7), 0 1px 0 rgba(255,255,255,0.08) inset, 0 0 0 1px rgba(200,164,90,0.15)",
               }}
             >
-              <span className="text-xl leading-none">{tab.emoji}</span>
-              <span className="text-[10px] font-semibold text-[#c8a45a] uppercase tracking-wide leading-none">{tab.label}</span>
+              <span className="text-xl sm:text-3xl leading-none">{tab.emoji}</span>
+              <span className="text-[10px] sm:text-xs font-semibold text-[#c8a45a] uppercase tracking-wide leading-none">{tab.label}</span>
             </a>
           ))}
         </div>
