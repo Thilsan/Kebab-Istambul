@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const menuItems = [
   {
@@ -151,7 +151,76 @@ const extraSections = [
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("#specials");
+  const [showSplash, setShowSplash] = useState(true);
+  const [fadeOut, setFadeOut] = useState(false);
+
+  useEffect(() => {
+    const fadeTimer = setTimeout(() => setFadeOut(true), 2000);
+    const hideTimer = setTimeout(() => setShowSplash(false), 2600);
+    return () => { clearTimeout(fadeTimer); clearTimeout(hideTimer); };
+  }, []);
+
   return (
+    <>
+      {/* Splash Screen */}
+      {showSplash && (
+        <div
+          className="fixed inset-0 z-100 flex flex-col items-center justify-center"
+          style={{
+            background: "radial-gradient(ellipse at center, #1a0a00 0%, #0a0500 60%, #000 100%)",
+            transition: "opacity 0.6s ease",
+            opacity: fadeOut ? 0 : 1,
+            pointerEvents: fadeOut ? "none" : "auto",
+          }}
+        >
+          {/* Decorative top line */}
+          <div className="flex items-center gap-3 mb-8">
+            <div className="h-px w-16 bg-linear-to-r from-transparent to-[#c8a45a]" />
+            <span className="text-[#c8a45a] text-xl">✦</span>
+            <div className="h-px w-16 bg-linear-to-l from-transparent to-[#c8a45a]" />
+          </div>
+
+          {/* Ornament */}
+          <div className="flex items-center gap-4 mb-4">
+            <span className="text-[#c8a45a] text-4xl">❧</span>
+            <span className="text-[#c8a45a] text-4xl">❧</span>
+          </div>
+
+          {/* Name */}
+          <h1 className="text-white text-4xl font-black tracking-[0.3em] uppercase mb-2">
+            Kebab
+          </h1>
+          <h1 className="text-[#c0392b] text-5xl font-black tracking-[0.25em] uppercase mb-6">
+            Istambul
+          </h1>
+
+          {/* Tagline */}
+          <p className="text-[#c8a45a]/60 text-xs tracking-[0.4em] uppercase mb-10">
+            Authentic Flavours
+          </p>
+
+          {/* Decorative bottom line */}
+          <div className="flex items-center gap-3">
+            <div className="h-px w-16 bg-linear-to-r from-transparent to-[#c8a45a]" />
+            <span className="text-[#c8a45a] text-xl">✦</span>
+            <div className="h-px w-16 bg-linear-to-l from-transparent to-[#c8a45a]" />
+          </div>
+
+          {/* Loading dots */}
+          <div className="flex gap-1.5 mt-12">
+            {[0, 1, 2].map((i) => (
+              <div
+                key={i}
+                className="w-1.5 h-1.5 rounded-full bg-[#c8a45a]/50"
+                style={{
+                  animation: `splashPulse 1.2s ease-in-out ${i * 0.2}s infinite`,
+                }}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+      <div style={{ visibility: showSplash && !fadeOut ? "hidden" : "visible" }}>
     <div className="min-h-screen">
       {/* Logo — not sticky, just sits at top */}
       <div className="py-3 px-4 border-b border-[#c8a45a]/20">
@@ -373,9 +442,11 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="text-center pb-8 text-zinc-400 text-xs tracking-wide">
-        All meals include a soft drink unless stated otherwise
+      <footer className="text-center pb-8 text-zinc-500 text-xs tracking-wide">
+        © {new Date().getFullYear()} Kebab Istambul. All rights reserved.
       </footer>
     </div>
+      </div>
+    </>
   );
 }
