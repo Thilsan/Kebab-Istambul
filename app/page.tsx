@@ -188,7 +188,7 @@ export default function Home() {
 
           {/* Name */}
           <h1 className="text-white text-4xl font-black tracking-[0.3em] uppercase mb-2">
-            Kebab
+            Costa Kebab
           </h1>
           <h1 className="text-[#c0392b] text-5xl font-black tracking-[0.25em] uppercase mb-6">
             Istambul
@@ -228,7 +228,7 @@ export default function Home() {
         <div className="flex items-center justify-center gap-3 mb-2">
           <span className="text-[#c8a45a] text-2xl">❧</span>
           <span className="text-[#c8a45a] text-sm tracking-[0.35em] uppercase font-semibold">
-            Kebab Istambul
+            Costa Kebab Istambul
           </span>
           <span className="text-[#c8a45a] text-2xl">❧</span>
         </div>
@@ -262,7 +262,7 @@ export default function Home() {
           <div className="w-px h-4 bg-[#c8a45a]/30" />
           {/* Location */}
           <a
-            href="https://maps.google.com"
+            href="https://maps.app.goo.gl/HzH7JDRTcW3ENWJm8"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Location"
@@ -443,7 +443,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="text-center pb-8 text-zinc-500 text-xs tracking-wide">
-        © {new Date().getFullYear()} Kebab Istambul. All rights reserved.
+        © {new Date().getFullYear()} Costa Kebab Istambul. All rights reserved.
       </footer>
     </div>
       </div>

@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kebab Istambul – Menu",
-  description: "Explore our delicious menu at Kebab Istambul",
+  title: "Costa Kebab Istambul – Menu",
+  description: "Explore our delicious menu at Costa Kebab Istambul",
 };
 
 export default function RootLayout({
