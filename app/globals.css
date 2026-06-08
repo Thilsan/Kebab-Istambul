@@ -20,7 +20,7 @@
 }
 
 body {
-  background: radial-gradient(ellipse at top, #1a0a00 0%, #0d0000 40%, #000000 100%);
+  background: #0a0000;
   min-height: 100vh;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
@@ -58,6 +58,10 @@ body {
   animation: float 3.5s ease-in-out infinite;
   filter: brightness(0.92) drop-shadow(0 10px 12px rgba(192, 57, 43, 0.62));
   transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.menu-row {
+  background: radial-gradient(ellipse at right center, #3d0a00 0%, #1a0500 35%, #0a0000 70%);
 }
 
 .menu-img:hover {
