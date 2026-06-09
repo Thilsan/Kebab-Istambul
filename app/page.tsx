@@ -4,64 +4,64 @@ import { useState, useEffect } from "react";
 const menuItems = [
   {
     id: 1,
-    name: "1/2 Chicken",
-    description: "Con patata con bebida",
+    name: { en: "1/2 Chicken", es: "1/2 Pollo" },
+    description: { en: "With chips and drink", es: "Con patata con bebida" },
     price: "10.95",
     image: "/menu1.png",
   },
   {
     id: 2,
-    name: "Chicken Karry",
-    description: "With pilow rice, soft drink",
+    name: { en: "Chicken Karry", es: "Curry de Pollo" },
+    description: { en: "With pilaf rice, soft drink", es: "Con arroz pilaf, bebida" },
     price: "13.95",
     image: "/menu2.png",
   },
   {
     id: 3,
-    name: "Chicken Tikka Masolla",
+    name: { en: "Chicken Tikka Masolla", es: "Tikka Masala de Pollo" },
     description: null,
     price: "13.95",
     image: "/menu3.png",
   },
   {
     id: 4,
-    name: "Fish and Chips",
-    description: "With drinks",
+    name: { en: "Fish and Chips", es: "Pescado con Patatas" },
+    description: { en: "With drink", es: "Con bebida" },
     price: "12.95",
     image: "/menu4.png",
   },
   {
     id: 5,
-    name: "Seekh Kebab",
-    description: "With rice or chips or salad (any one) – with drinks",
+    name: { en: "Seekh Kebab", es: "Seekh Kebab" },
+    description: { en: "With rice or chips or salad (any one) – with drink", es: "Con arroz o patatas o ensalada (uno) – con bebida" },
     price: "10.95",
     image: "/menu5.png",
   },
   {
     id: 6,
-    name: "FriKandel",
-    description: "With chips and salad, with drinks",
+    name: { en: "FriKandel", es: "FriKandel" },
+    description: { en: "With chips and salad, with drink", es: "Con patatas y ensalada, con bebida" },
     price: "11.95",
     image: "/menu6.png",
   },
   {
     id: 7,
-    name: "Chicken Finger",
-    description: "With rice and salad, drinks",
+    name: { en: "Chicken Finger", es: "Dedos de Pollo" },
+    description: { en: "With rice and salad, drink", es: "Con arroz y ensalada, con bebida" },
     price: "10.95",
     image: "/menu7.png",
   },
   {
     id: 8,
-    name: "Fry Chicken",
-    description: "With drinks – with salad, chips",
+    name: { en: "Fry Chicken", es: "Pollo Frito" },
+    description: { en: "With drink – with salad, chips", es: "Con bebida – con ensalada, patatas" },
     price: "11.95",
     image: "/menu8.png",
   },
   {
     id: 9,
-    name: "Onion Bazi",
-    description: "Tortilla de Cebolla",
+    name: { en: "Onion Bazi", es: "Tortilla de Cebolla" },
+    description: { en: "Onion Frittata", es: "Tortilla de Cebolla" },
     price: "4.95",
     image: "/menu9.png",
   },
@@ -70,9 +70,9 @@ const menuItems = [
 const extraSections = [
   {
     title: "Rollo Kebab",
-    note: "Rollos con queso gratinado",
+    note: { en: "Rolls with gratinated cheese", es: "Rollos con queso gratinado" },
     items: [
-      { name: "Rollo Kebab", sub: "Ternera o Pollo", price: "5.00", menu: "Menú 9.00" },
+      { name: "Rollo Kebab", sub: { en: "Beef or Chicken", es: "Ternera o Pollo" }, price: "5.00", menu: "Menú 9.00" },
       { name: "Rollo Kebab", sub: "Medium", price: "7.00", menu: "Menú 11.00" },
       { name: "Rollo Kebab", sub: "XXL", price: "9.00", menu: "Menú 13.00" },
       { name: "Kebab Especial", sub: null, price: "11.00", menu: "Menú 15.00" },
@@ -82,9 +82,9 @@ const extraSections = [
     title: "Pita Kebab",
     note: null,
     items: [
-      { name: "Pita Kebab", sub: "Ternera o Pollo", price: "5.00", menu: null },
-      { name: "Pita Kebab", sub: "De Ternera o Pollo", price: "6.00", menu: null },
-      { name: "Pita Kebab", sub: "Verdura o Falafel", price: "5.00", menu: null },
+      { name: "Pita Kebab", sub: { en: "Beef or Chicken", es: "Ternera o Pollo" }, price: "5.00", menu: null },
+      { name: "Pita Kebab", sub: { en: "Beef or Chicken", es: "De Ternera o Pollo" }, price: "6.00", menu: null },
+      { name: "Pita Kebab", sub: { en: "Vegetable or Falafel", es: "Verdura o Falafel" }, price: "5.00", menu: null },
     ],
   },
   {
@@ -92,20 +92,20 @@ const extraSections = [
     note: null,
     items: [
       { name: "Lahmacum", sub: null, price: "6.50", menu: null },
-      { name: "Hamburguesa", sub: "Ternera o Pollo", price: "5.00", menu: null },
-      { name: 'Falafel "Plato"', sub: "Arroz, Patatas, Ensalada", price: "8.00", menu: null },
+      { name: "Hamburguesa", sub: { en: "Beef or Chicken", es: "Ternera o Pollo" }, price: "5.00", menu: null },
+      { name: 'Falafel "Plato"', sub: { en: "Rice, Chips, Salad", es: "Arroz, Patatas, Ensalada" }, price: "8.00", menu: null },
       { name: "Alitas de Pollo", sub: null, price: "4.00", menu: null },
       { name: "Nugget de Pollo", sub: null, price: "4.00", menu: null },
     ],
   },
   {
     title: "Pollo Asado",
-    note: "Con arroz o patatas o ensalada o pimientos fritos",
+    note: { en: "With rice or potatoes or salad or fried peppers", es: "Con arroz o patatas o ensalada o pimientos fritos" },
     items: [
-      { name: "½ Pollo Asado", sub: "Para llevar", price: "6.00", menu: null },
-      { name: "Pollo Asado Entero", sub: "Para llevar", price: "12.00", menu: null },
-      { name: "Pollo Asado", sub: "Para comer aquí", price: "18.00", menu: null },
-      { name: "½ Pollo Asado", sub: "Para comer aquí", price: "10.00", menu: null },
+      { name: "½ Pollo Asado", sub: { en: "Takeaway", es: "Para llevar" }, price: "6.00", menu: null },
+      { name: "Pollo Asado Entero", sub: { en: "Takeaway", es: "Para llevar" }, price: "12.00", menu: null },
+      { name: "Pollo Asado", sub: { en: "Eat in", es: "Para comer aquí" }, price: "18.00", menu: null },
+      { name: "½ Pollo Asado", sub: { en: "Eat in", es: "Para comer aquí" }, price: "10.00", menu: null },
       { name: "Ensalada Mixta", sub: null, price: "5.00", menu: null },
       { name: "Arroz Blanco", sub: null, price: "4.00", menu: null },
       { name: "Barra de Pan", sub: null, price: "1.00", menu: null },
@@ -127,7 +127,7 @@ const extraSections = [
   },
   {
     title: "Kapsalon",
-    note: "Patatas fritas, kebab, queso, ensalada, salsa ajo y picante",
+    note: { en: "Fries, kebab, cheese, salad, garlic and spicy sauce", es: "Patatas fritas, kebab, queso, ensalada, salsa ajo y picante" },
     items: [
       { name: "Pequeño", sub: null, price: "7.95", menu: null },
       { name: "Mediano", sub: null, price: "10.95", menu: null },
@@ -149,10 +149,55 @@ const extraSections = [
   },
 ];
 
+type Lang = "en" | "es";
+type BilingualStr = string | { en: string; es: string } | null | undefined;
+
+function getText(val: BilingualStr, lang: Lang): string {
+  if (!val) return "";
+  if (typeof val === "string") return val;
+  return val[lang];
+}
+
+const uiStrings = {
+  en: {
+    findUs: "Find us",
+    bangladeshiNote: "Once a week only · Halal",
+    saucesTitle: "Sauces:",
+    sauces: [
+      "Garlic/Yogurt (contains gluten)",
+      "Ketchup",
+      "Spicy",
+      "B.B.Q.",
+      "Mayonnaise",
+      "Mango",
+      "Ali Oli",
+    ],
+    footerText: "All rights reserved.",
+    tabs: ["Rollo", "Pita", "Burger", "Chicken", "Pizza", "Kapsalon", "Chips", "Specials", "Bengali"],
+  },
+  es: {
+    findUs: "Encuéntranos",
+    bangladeshiNote: "Solo una vez a la semana · Halal",
+    saucesTitle: "Las Salsas:",
+    sauces: [
+      "Ajo/Yogurt (con gluten)",
+      "Ketchup",
+      "Picante",
+      "B.B.Q.",
+      "Mayonesa",
+      "Mango",
+      "Ali Oli",
+    ],
+    footerText: "Todos los derechos reservados.",
+    tabs: ["Rollo", "Pita", "Burger", "Pollo", "Pizza", "Kapsalon", "Patatas", "Specials", "Bangladeshi"],
+  },
+};
+
 export default function Home() {
   const [activeTab, setActiveTab] = useState("#rollo-kebab");
   const [showSplash, setShowSplash] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
+  const [lang, setLang] = useState<Lang>("en");
 
   useEffect(() => {
     const fadeTimer = setTimeout(() => setFadeOut(true), 2000);
@@ -271,24 +316,41 @@ export default function Home() {
             <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
             </svg>
-            <span className="text-[10px] font-semibold tracking-wide uppercase">Find us</span>
+            <span className="text-[10px] font-semibold tracking-wide uppercase">{uiStrings[lang].findUs}</span>
           </a>
         </div>
+      </div>
+
+      {/* Floating Language Toggle */}
+      <div className="fixed bottom-5 right-4 z-50 flex rounded-lg overflow-hidden border border-[#c8a45a]/40 shadow-lg shadow-black/60">
+        {(["en", "es"] as Lang[]).map((l) => (
+          <button
+            key={l}
+            onClick={() => setLang(l)}
+            className="px-3 py-2 text-xs font-bold uppercase tracking-wider transition-all"
+            style={{
+              background: lang === l ? "#c0392b" : "#1a1a1a",
+              color: lang === l ? "#fff" : "#c8a45a",
+            }}
+          >
+            {l === "en" ? "EN" : "ES"}
+          </button>
+        ))}
       </div>
 
       {/* Sticky Category Nav — between MENU title and food items */}
       <nav className="tab-nav sticky top-0 z-50 overflow-x-auto mt-4">
         <div className="flex gap-1 sm:gap-2 px-2 sm:px-4 py-2 sm:py-3 w-max sm:w-full sm:justify-center">
           {[
-            { emoji: "🌯", label: "Rollo", href: "#rollo-kebab" },
-            { emoji: "🥙", label: "Pita", href: "#pita-kebab" },
-            { emoji: "🍔", label: "Burger", href: "#burger-falafel" },
-            { emoji: "🍗", label: "Pollo", href: "#pollo-asado" },
-            { emoji: "🍕", label: "Pizza", href: "#pizzas" },
-            { emoji: "🍟", label: "Kapsalon", href: "#kapsalon" },
-            { emoji: "🧆", label: "Patatas", href: "#patatas" },
-            { emoji: "🍽️", label: "Specials", href: "#specials" },
-            { emoji: "🍛", label: "Bangladeshi", href: "#bangladeshi" },
+            { emoji: "🌯", label: uiStrings[lang].tabs[0], href: "#rollo-kebab" },
+            { emoji: "🥙", label: uiStrings[lang].tabs[1], href: "#pita-kebab" },
+            { emoji: "🍔", label: uiStrings[lang].tabs[2], href: "#burger-falafel" },
+            { emoji: "🍗", label: uiStrings[lang].tabs[3], href: "#pollo-asado" },
+            { emoji: "🍕", label: uiStrings[lang].tabs[4], href: "#pizzas" },
+            { emoji: "🍟", label: uiStrings[lang].tabs[5], href: "#kapsalon" },
+            { emoji: "🧆", label: uiStrings[lang].tabs[6], href: "#patatas" },
+            { emoji: "🍽️", label: uiStrings[lang].tabs[7], href: "#specials" },
+            { emoji: "🍛", label: uiStrings[lang].tabs[8], href: "#bangladeshi" },
           ].map((tab) => {
             const isActive = activeTab === tab.href;
             return (
@@ -344,7 +406,7 @@ export default function Home() {
               {/* Items */}
               <div className="px-3 py-2 space-y-0">
                 {section.note && (
-                  <p className="text-[#c8a45a] text-xs italic mb-2">{section.note}</p>
+                  <p className="text-[#c8a45a] text-xs italic mb-2">{getText(section.note, lang)}</p>
                 )}
                 {section.items.map((item, i) => (
                   <div key={i}>
@@ -352,7 +414,7 @@ export default function Home() {
                       <div className="flex-1 min-w-0">
                         <span className="text-white text-sm font-bold">{item.name}</span>
                         {item.sub && (
-                          <span className="text-white/55 text-xs ml-1">({item.sub})</span>
+                          <span className="text-white/55 text-xs ml-1">({getText(item.sub, lang)})</span>
                         )}
                       </div>
                       <div className="flex items-baseline gap-2 shrink-0">
@@ -376,6 +438,30 @@ export default function Home() {
                   <img
                     src="/rollo.png"
                     alt="Rollo Kebab"
+                    className="w-2/3 h-auto object-contain drop-shadow-[0_8px_24px_rgba(192,57,43,0.5)]"
+                  />
+                </div>
+              )}
+
+              {/* Section image */}
+              {section.title === "Pollo Asado" && (
+                <div className="flex justify-center">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/pollo.png"
+                    alt="Pollo Asado"
+                    className="w-2/3 h-auto object-contain drop-shadow-[0_8px_24px_rgba(192,57,43,0.5)]"
+                  />
+                </div>
+              )}
+
+              {/* Section image */}
+              {section.title === "Pita Kebab" && (
+                <div className="flex justify-center">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/pita.png"
+                    alt="Pita Kebab"
                     className="w-2/3 h-auto object-contain drop-shadow-[0_8px_24px_rgba(192,57,43,0.5)]"
                   />
                 </div>
@@ -424,10 +510,10 @@ export default function Home() {
                   {/* Name + description + price */}
                   <div className="flex-1 min-w-0">
                     <p className="text-white font-bold text-sm sm:text-base leading-snug">
-                      {item.name}
+                      {getText(item.name, lang)}
                     </p>
                     <p className="text-white/70 text-xs sm:text-sm leading-snug mt-0.5 min-h-4 sm:min-h-5">
-                      {item.description ?? ""}
+                      {getText(item.description, lang)}
                     </p>
                     <p className="text-[#c8a45a] font-bold text-base sm:text-lg mt-1 leading-snug">
                       {item.price}£
@@ -440,7 +526,7 @@ export default function Home() {
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={item.image as string}
-                        alt={item.name}
+                        alt={getText(item.name, lang)}
                         className="menu-img w-full h-full object-contain"
                       />
                     )}
@@ -469,20 +555,20 @@ export default function Home() {
         <div id="bangladeshi" className="scroll-mt-20 mt-6 border border-[#c0392b]/40 rounded-sm overflow-hidden">
           <div className="bg-[#c0392b] px-3 py-1.5 flex items-center justify-between">
             <h2 className="text-white text-sm font-black tracking-widest uppercase">Bangladeshi Food</h2>
-            <span className="text-[#c8a45a] text-xs font-semibold italic">Solo una vez a la semana · Halal</span>
+            <span className="text-[#c8a45a] text-xs font-semibold italic">{uiStrings[lang].bangladeshiNote}</span>
           </div>
           <div className="px-3 py-2 space-y-0">
             {[
-              { name: "Chicken Biryani + Drink", price: "12.00" },
-              { name: "Beef Biryani + Drink", price: "15.00" },
-              { name: "Fish Biryani + Drink", price: "15.00" },
-              { name: "Beef Curry + Rice + Drink", price: "15.00" },
-              { name: "Chicken Curry + Rice + Drink", price: "12.00" },
-              { name: "White Rice", price: "4.00" },
+              { name: { en: "Chicken Biryani + Drink", es: "Biryani de Pollo + Bebida" }, price: "12.00" },
+              { name: { en: "Beef Biryani + Drink", es: "Biryani de Ternera + Bebida" }, price: "15.00" },
+              { name: { en: "Fish Biryani + Drink", es: "Biryani de Pescado + Bebida" }, price: "15.00" },
+              { name: { en: "Beef Curry + Rice + Drink", es: "Curry de Ternera + Arroz + Bebida" }, price: "15.00" },
+              { name: { en: "Chicken Curry + Rice + Drink", es: "Curry de Pollo + Arroz + Bebida" }, price: "12.00" },
+              { name: { en: "White Rice", es: "Arroz Blanco" }, price: "4.00" },
             ].map((item, i, arr) => (
               <div key={i}>
                 <div className="flex items-baseline justify-between gap-2 py-1.5">
-                  <span className="text-white text-sm font-bold">{item.name}</span>
+                  <span className="text-white text-sm font-bold">{getText(item.name, lang)}</span>
                   <span className="text-[#c8a45a] font-bold text-sm shrink-0">{item.price}€</span>
                 </div>
                 {i < arr.length - 1 && <div className="border-b border-dashed border-white/10" />}
@@ -498,17 +584,13 @@ export default function Home() {
         {/* Las Salsas */}
         <div className="border border-[#c0392b]/40 rounded-sm overflow-hidden">
           <div className="bg-[#c0392b] px-3 py-1.5">
-            <h2 className="text-white text-sm font-black tracking-widest uppercase">Las Salsas:</h2>
+            <h2 className="text-white text-sm font-black tracking-widest uppercase">{uiStrings[lang].saucesTitle}</h2>
           </div>
           <div className="px-3 py-2">
             <ul className="text-white/70 text-sm font-semibold uppercase leading-relaxed">
-              <li>Ajo/Yogurt <span className="text-white/40 text-xs normal-case">(con gluten)</span></li>
-              <li>Ketchup</li>
-              <li>Picante</li>
-              <li>B.B.Q.</li>
-              <li>Mayonesa</li>
-              <li>Mango</li>
-              <li>Ali Oli</li>
+              {uiStrings[lang].sauces.map((sauce, i) => (
+                <li key={i}>{sauce}</li>
+              ))}
             </ul>
           </div>
         </div>
@@ -576,7 +658,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="text-center pb-8 text-zinc-500 text-xs tracking-wide">
-        © {new Date().getFullYear()} Costa Kebab Istambul 1. All rights reserved.
+        © {new Date().getFullYear()} Costa Kebab Istambul 1. {uiStrings[lang].footerText}
       </footer>
     </div>
       </div>
