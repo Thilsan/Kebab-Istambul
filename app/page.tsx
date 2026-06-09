@@ -456,6 +456,24 @@ export default function Home() {
               )}
 
               {/* Section image */}
+              {section.title === "Hamburguesa · Falafel · Lahmacum" && (
+                <div className="flex justify-center gap-2">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/hamburguesa.png"
+                    alt="Hamburguesa"
+                    className="w-1/2 h-auto object-contain drop-shadow-[0_8px_24px_rgba(192,57,43,0.5)]"
+                  />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/felafel.png"
+                    alt="Falafel"
+                    className="w-1/2 h-auto object-contain drop-shadow-[0_8px_24px_rgba(192,57,43,0.5)]"
+                  />
+                </div>
+              )}
+
+              {/* Section image */}
               {section.title === "Pita Kebab" && (
                 <div className="flex justify-center">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
