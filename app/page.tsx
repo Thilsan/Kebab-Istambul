@@ -646,6 +646,21 @@ export default function Home() {
               </div>
             ))}
           </div>
+          {/* Section image */}
+          <div className="flex justify-center gap-2">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/bn.png"
+              alt="Bangladeshi Food"
+              className="w-1/2 h-auto object-contain drop-shadow-[0_8px_24px_rgba(192,57,43,0.5)]"
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/bn1.png"
+              alt="Bangladeshi Food 1"
+              className="w-1/2 h-auto object-contain drop-shadow-[0_8px_24px_rgba(192,57,43,0.5)]"
+            />
+          </div>
         </div>
 
       </main>
