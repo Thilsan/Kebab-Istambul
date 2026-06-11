@@ -626,7 +626,11 @@ export default function Home() {
         <div id="bangladeshi" className="scroll-mt-20 mt-2 border border-[#c0392b]/40 rounded-sm overflow-hidden">
           <div className="bg-[#c0392b] px-3 py-1.5 flex items-center justify-between">
             <h2 className="text-white text-sm font-black tracking-widest uppercase">Bangladeshi Food</h2>
-            <span className="text-[#c8a45a] text-xs font-semibold italic">{uiStrings[lang].bangladeshiNote}</span>
+            <div className="flex items-center gap-2">
+              <span className="text-[#c8a45a] text-xs font-semibold italic">{uiStrings[lang].bangladeshiNote}</span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/halal.png" alt="Halal" className="h-8 w-auto object-contain" />
+            </div>
           </div>
           <div className="px-3 py-2 space-y-0">
             {[
