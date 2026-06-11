@@ -136,7 +136,7 @@ const extraSections = [
     ],
   },
   {
-    title: "Pita Kash · Patatas · Doner Box",
+    title: "Pita Kash · Patatas · Patatas con Queso · Doner Box",
     note: null,
     items: [
       { name: "Pita Kash · Pita Queso", sub: null, price: "5.00", menu: null },
@@ -392,7 +392,7 @@ export default function Home() {
               "Pollo Asado": "pollo-asado",
               "Pizzas": "pizzas",
               "Kapsalon": "kapsalon",
-              "Pita Kash · Patatas · Doner Box": "patatas",
+              "Pita Kash · Patatas · Patatas con Queso · Doner Box": "patatas",
             };
             return (
             <div key={section.title} id={idMap[section.title]} className="scroll-mt-20 border border-[#c0392b]/40 rounded-sm overflow-hidden">
@@ -445,12 +445,18 @@ export default function Home() {
 
               {/* Section image */}
               {section.title === "Pollo Asado" && (
-                <div className="flex justify-center">
+                <div className="flex justify-center gap-2">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/pollo.png"
+                    alt="Pollo"
+                    className="w-1/2 h-auto object-contain drop-shadow-[0_8px_24px_rgba(192,57,43,0.5)]"
+                  />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/polo asdo.png"
                     alt="Pollo Asado"
-                    className="w-2/3 h-auto object-contain drop-shadow-[0_8px_24px_rgba(192,57,43,0.5)]"
+                    className="w-1/2 h-auto object-contain drop-shadow-[0_8px_24px_rgba(192,57,43,0.5)]"
                   />
                 </div>
               )}
@@ -493,6 +499,48 @@ export default function Home() {
                     src="/pizza.png"
                     alt="Pizzas"
                     className="w-2/3 h-auto object-contain drop-shadow-[0_8px_24px_rgba(192,57,43,0.5)]"
+                  />
+                </div>
+              )}
+
+              {/* Section image */}
+              {section.title === "Pita Kash · Patatas · Patatas con Queso · Doner Box" && (
+                <div className="flex justify-center gap-2">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/pitakash.png"
+                    alt="Pita Kash"
+                    className="w-1/3 h-auto object-contain drop-shadow-[0_8px_24px_rgba(192,57,43,0.5)]"
+                  />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/pitakash2.png"
+                    alt="Pita Kash 2"
+                    className="w-1/3 h-auto object-contain drop-shadow-[0_8px_24px_rgba(192,57,43,0.5)]"
+                  />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/pitakash3.png"
+                    alt="Pita Kash 3"
+                    className="w-1/3 h-auto object-contain drop-shadow-[0_8px_24px_rgba(192,57,43,0.5)]"
+                  />
+                </div>
+              )}
+
+              {/* Section image */}
+              {section.title === "Kapsalon" && (
+                <div className="flex justify-center gap-2">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/kapsalon.png"
+                    alt="Kapsalon"
+                    className="w-1/2 h-auto object-contain drop-shadow-[0_8px_24px_rgba(192,57,43,0.5)]"
+                  />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/kapsalon1.png"
+                    alt="Kapsalon 1"
+                    className="w-1/2 h-auto object-contain drop-shadow-[0_8px_24px_rgba(192,57,43,0.5)]"
                   />
                 </div>
               )}
@@ -569,8 +617,13 @@ export default function Home() {
           />
         </div>
 
+        {/* Solo Una Vez Banner */}
+        <div className="mt-6 bg-yellow-400 px-4 py-3 rounded-sm text-center">
+          <p className="text-black font-black text-lg tracking-widest uppercase leading-tight">SOLO UNA VEZ<br />A LA SEMANA</p>
+        </div>
+
         {/* Bangladeshi Food */}
-        <div id="bangladeshi" className="scroll-mt-20 mt-6 border border-[#c0392b]/40 rounded-sm overflow-hidden">
+        <div id="bangladeshi" className="scroll-mt-20 mt-2 border border-[#c0392b]/40 rounded-sm overflow-hidden">
           <div className="bg-[#c0392b] px-3 py-1.5 flex items-center justify-between">
             <h2 className="text-white text-sm font-black tracking-widest uppercase">Bangladeshi Food</h2>
             <span className="text-[#c8a45a] text-xs font-semibold italic">{uiStrings[lang].bangladeshiNote}</span>
