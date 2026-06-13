@@ -173,7 +173,7 @@ const uiStrings = {
       "Ali Oli",
     ],
     footerText: "All rights reserved.",
-    tabs: ["Rollo", "Pita", "Burger", "Chicken", "Pizza", "Kapsalon", "Chips", "Specials", "Bengali"],
+    tabs: ["Menús", "Rollo", "Pita", "Burger", "Chicken", "Pizza", "Kapsalon", "Chips", "Specials", "Bengali", "Tapas"],
   },
   es: {
     findUs: "Encuéntranos",
@@ -189,12 +189,12 @@ const uiStrings = {
       "Ali Oli",
     ],
     footerText: "Todos los derechos reservados.",
-    tabs: ["Rollo", "Pita", "Burger", "Pollo", "Pizza", "Kapsalon", "Patatas", "Specials", "Bangladeshi"],
+    tabs: ["Menús", "Rollo", "Pita", "Burger", "Pollo", "Pizza", "Kapsalon", "Patatas", "Specials", "Bangladeshi", "Tapas"],
   },
 };
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState("#rollo-kebab");
+  const [activeTab, setActiveTab] = useState("#menus");
   const [showSplash, setShowSplash] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
   const [lang, setLang] = useState<Lang>("en");
@@ -342,15 +342,17 @@ export default function Home() {
       <nav className="tab-nav sticky top-0 z-50 overflow-x-auto mt-4">
         <div className="flex gap-1 sm:gap-2 px-2 sm:px-4 py-2 sm:py-3 w-max sm:w-full sm:justify-center">
           {[
-            { emoji: "🌯", label: uiStrings[lang].tabs[0], href: "#rollo-kebab" },
-            { emoji: "🥙", label: uiStrings[lang].tabs[1], href: "#pita-kebab" },
-            { emoji: "🍔", label: uiStrings[lang].tabs[2], href: "#burger-falafel" },
-            { emoji: "🍗", label: uiStrings[lang].tabs[3], href: "#pollo-asado" },
-            { emoji: "🍕", label: uiStrings[lang].tabs[4], href: "#pizzas" },
-            { emoji: "🍟", label: uiStrings[lang].tabs[5], href: "#kapsalon" },
-            { emoji: "🧆", label: uiStrings[lang].tabs[6], href: "#patatas" },
-            { emoji: "🍽️", label: uiStrings[lang].tabs[7], href: "#specials" },
-            { emoji: "🍛", label: uiStrings[lang].tabs[8], href: "#bangladeshi" },
+            { emoji: "📋", label: uiStrings[lang].tabs[0], href: "#menus" },
+            { emoji: "🌯", label: uiStrings[lang].tabs[1], href: "#rollo-kebab" },
+            { emoji: "🥙", label: uiStrings[lang].tabs[2], href: "#pita-kebab" },
+            { emoji: "🍔", label: uiStrings[lang].tabs[3], href: "#burger-falafel" },
+            { emoji: "🍗", label: uiStrings[lang].tabs[4], href: "#pollo-asado" },
+            { emoji: "🍕", label: uiStrings[lang].tabs[5], href: "#pizzas" },
+            { emoji: "🍟", label: uiStrings[lang].tabs[6], href: "#kapsalon" },
+            { emoji: "🧆", label: uiStrings[lang].tabs[7], href: "#patatas" },
+            { emoji: "🍽️", label: uiStrings[lang].tabs[8], href: "#specials" },
+            { emoji: "🍛", label: uiStrings[lang].tabs[9], href: "#bangladeshi" },
+            { emoji: "🐟", label: uiStrings[lang].tabs[10], href: "#tapas" },
           ].map((tab) => {
             const isActive = activeTab === tab.href;
             return (
@@ -381,6 +383,117 @@ export default function Home() {
 
       {/* Main Menu Items */}
       <main className="px-3 sm:px-4 pb-10 w-full max-w-lg mx-auto">
+
+        {/* Menús Combos Board */}
+        <div id="menus" className="scroll-mt-20 mt-4">
+          <div className="grid grid-cols-2 gap-0.5 bg-[#444] rounded-sm overflow-hidden">
+            {(
+              [
+                {
+                  num: 1,
+                  items: [
+                    { name: "ROLLO\nKEBAB", img: "/rollo.png" },
+                    { name: "PITA\nKEBAB", img: "/pita.png" },
+                  ],
+                  desc1: { en: "BEEF OR CHICKEN", es: "TERNERA O POLLO" } as BilingualStr,
+                  desc2: "PATATAS FRITAS + BEBIDA",
+                  prices: ["9.00", "9.00"],
+                },
+                {
+                  num: 2,
+                  items: [
+                    { name: "PLATO\nKEBAB", img: null as string | null },
+                    { name: "PLATO\nSULTAN", img: null as string | null },
+                  ],
+                  desc1: { en: "BEEF OR CHICKEN", es: "TERNERA O POLLO" } as BilingualStr,
+                  desc2: { en: "RICE OR SALAD\nCHIPS + DRINK", es: "ARROZ O ENSALADA\nPATATAS FRITAS + BEBIDA" } as BilingualStr,
+                  prices: ["9.95", "10.95"],
+                },
+                {
+                  num: 3,
+                  items: [
+                    { name: "LAHMACUM\nKEBAB", img: null as string | null },
+                    { name: "HAMBU-\nRGUESA", img: "/hamburguesa.png" },
+                  ],
+                  desc1: { en: "BEEF OR CHICKEN", es: "TERNERA O POLLO" } as BilingualStr,
+                  desc2: "PATATAS FRITAS + BEBIDA",
+                  prices: ["9.50", "9.00"],
+                },
+                {
+                  num: 4,
+                  items: [
+                    { name: "ALITAS\nPOLLO", img: null as string | null },
+                    { name: "NUGGETS\nDE POLLO", img: null as string | null },
+                  ],
+                  desc1: null as BilingualStr,
+                  desc2: "PATATAS FRITAS + BEBIDA",
+                  prices: ["8.50", "8.00"],
+                },
+              ] as const
+            ).map((menu) => (
+              <div key={menu.num} className="bg-[#111] p-2 flex flex-col" style={{ minHeight: 190 }}>
+                {/* Menu number header */}
+                <div className="flex items-center gap-1.5 mb-2">
+                  <span className="text-white font-black text-sm tracking-widest uppercase">MENÚ</span>
+                  <div className="relative w-7 h-7 shrink-0">
+                    <div
+                      className="absolute inset-0 bg-[#c0392b]"
+                      style={{
+                        clipPath:
+                          "polygon(50% 0%,61% 25%,93% 7%,75% 38%,100% 50%,75% 63%,93% 93%,61% 75%,50% 100%,38% 75%,7% 93%,25% 63%,0% 50%,25% 38%,7% 7%,38% 25%)",
+                      }}
+                    />
+                    <span className="absolute inset-0 flex items-center justify-center text-white font-black text-sm z-10">
+                      {menu.num}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Food items */}
+                <div className="flex gap-1 flex-1 mb-1.5">
+                  {menu.items.map((item, i) => (
+                    <div key={i} className="flex-1 flex flex-col items-center text-center">
+                      {item.img ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={item.img}
+                          alt={item.name.replace("\n", " ")}
+                          className="w-full h-14 object-contain"
+                        />
+                      ) : (
+                        <div className="w-full h-14 flex items-center justify-center">
+                          <span className="text-white/20 text-3xl">🍽️</span>
+                        </div>
+                      )}
+                      <span className="text-white font-black text-[9px] leading-tight whitespace-pre-line uppercase mt-0.5">
+                        {item.name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Descriptions */}
+                {menu.desc1 && (
+                  <p className="text-[#c8a45a] font-black text-[9px] text-center uppercase tracking-wide leading-tight">
+                    {getText(menu.desc1, lang)}
+                  </p>
+                )}
+                <p className="text-white/75 text-[8px] text-center uppercase whitespace-pre-line leading-tight mt-0.5">
+                  {getText(menu.desc2, lang)}
+                </p>
+
+                {/* Price pills */}
+                <div className="flex justify-center gap-2 mt-2">
+                  {menu.prices.map((price, i) => (
+                    <div key={i} className="bg-white rounded-full px-2.5 py-0.5">
+                      <span className="text-black font-black text-sm leading-none">{price}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* Extra Category Sections */}
         <div className="mt-4 space-y-6">
@@ -682,6 +795,119 @@ export default function Home() {
                 <li key={i}>{sauce}</li>
               ))}
             </ul>
+          </div>
+        </div>
+
+        {/* Tapas y Fritos */}
+        <div id="tapas" className="scroll-mt-20 border-2 border-[#c0392b] rounded-sm overflow-hidden">
+          <div className="bg-[#c0392b] px-3 py-2 flex items-center justify-between">
+            <h2 className="text-white text-base font-black tracking-widest uppercase">Tapas y Fritos</h2>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/halal.png" alt="Halal" className="h-8 w-auto object-contain" />
+          </div>
+          <div className="bg-[#111] px-3 py-2 space-y-0">
+            {[
+              { name: "Rosada Fish & Chips", sub: null, price: "10.95" },
+              { name: "Boquerones Fritos", sub: { en: "with chips or salad", es: "con patatas fritas o ensalada" } as BilingualStr, price: "9.00" },
+              { name: "Calamares Fritos", sub: { en: "with rice, chips or salad", es: "con arroz, patatas fritas o ensalada" } as BilingualStr, price: "9.00" },
+              { name: "Aros de Cebolla · Onion Rings", sub: null, price: "5.00" },
+              { name: "Pimientos Fritos", sub: null, price: "4.50" },
+              { name: "Samosas", sub: { en: "Vegetables or Chicken", es: "Vegetales o Pollo" } as BilingualStr, price: "5.00" },
+              { name: "Vegetales Pakora", sub: null, price: "4.00" },
+              { name: "Mini Frikandel", sub: { en: "with chips", es: "con patatas" } as BilingualStr, price: "6.95" },
+              { name: "Rundvlees Bitterballen", sub: { en: "with chips", es: "con patatas" } as BilingualStr, price: "6.95" },
+              { name: "Seekh Kebab", sub: null, price: "6.00" },
+            ].map((item, i, arr) => (
+              <div key={i}>
+                <div className="flex items-start justify-between gap-2 py-1.5">
+                  <div className="flex-1 min-w-0">
+                    <span className="text-white font-black text-sm uppercase leading-tight">
+                      {item.name}
+                    </span>
+                    {item.sub && (
+                      <p className="text-[#c0392b] text-xs italic leading-tight mt-0.5">
+                        ({getText(item.sub, lang)})
+                      </p>
+                    )}
+                  </div>
+                  <span className="text-white font-black text-sm shrink-0 pt-0.5">{item.price}€</span>
+                </div>
+                {i < arr.length - 1 && <div className="border-b border-dashed border-white/10" />}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Gracias por Su Visita */}
+        <div className="py-6 text-center">
+          <p className="text-white/90 text-xl sm:text-2xl font-semibold italic leading-snug">
+            Gracias por Su Visita
+          </p>
+          <p className="text-[#c0392b] text-xl sm:text-2xl font-semibold italic mt-0.5 leading-snug">
+            Thanks for Your Visit
+          </p>
+          <div className="flex items-center justify-center gap-3 mt-3">
+            <div className="h-px w-16 bg-[#c8a45a]/50" />
+            <span className="text-[#c8a45a] text-base">✦</span>
+            <div className="h-px w-16 bg-[#c8a45a]/50" />
+          </div>
+          <p className="text-white/40 text-[10px] tracking-widest uppercase mt-3 leading-relaxed">
+            {lang === "en"
+              ? "For the characteristics of our establishment, all our products may contain allergens. Ask our staff for information."
+              : "Por las características de nuestro establecimiento, todos nuestros productos son susceptibles de contener algún tipo de alérgeno. Solicite información a nuestro personal."}
+          </p>
+        </div>
+
+        {/* Allergen Information */}
+        <div className="border border-white/10 rounded-sm overflow-hidden bg-[#111] p-4">
+          {/* Disclaimer text — two columns, EN top, ES below */}
+          <div className="grid grid-cols-2 gap-3 mb-3">
+            <p className="text-white/65 text-[9px] italic leading-relaxed">
+              For the characteristics of installation, handling and development of the establishment, all our products are likely to contain directly or through of cross contamination some type of allergen.
+            </p>
+            <p className="text-white/65 text-[9px] text-right font-semibold uppercase leading-relaxed">
+              This establishment has information on allergies and intolerances food. Regulation (EU) 1169/2011. Ask for information to our staff.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-3 mb-5">
+            <p className="text-white/40 text-[9px] italic leading-relaxed">
+              Por las características de instalación, manipulación y elaboración del establecimiento, todos nuestros productos son susceptibles de contener de manera directa o a través de contaminación cruzada algún tipo de alérgeno.
+            </p>
+            <p className="text-white/40 text-[9px] text-right font-semibold uppercase leading-relaxed">
+              Este establecimiento dispone de información sobre alergias e intolerancias alimentarias. Reglamento (EU) 1169/2011. Solicite información a nuestro personal.
+            </p>
+          </div>
+
+          {/* Allergen icons */}
+          <div className="grid grid-cols-7 gap-2">
+            {[
+              { en: "Crustacean", es: "Crustáceos", icon: "🦐", bg: "#3b82f6" },
+              { en: "Sesame", es: "Sésamo", icon: "🌿", bg: "#6b7280" },
+              { en: "Nuts", es: "Frutos de Cáscara", icon: "🌰", bg: "#dc2626" },
+              { en: "Gluten", es: "Gluten", icon: "🌾", bg: "#f97316" },
+              { en: "Egg", es: "Huevo", icon: "🥚", bg: "#ca8a04" },
+              { en: "Fish", es: "Pescado", icon: "🐟", bg: "#0284c7" },
+              { en: "Shellfish", es: "Moluscos", icon: "🐚", bg: "#38bdf8" },
+              { en: "Mustard", es: "Mostaza", icon: "🌻", bg: "#ea580c" },
+              { en: "Celery", es: "Apio", icon: "🥬", bg: "#16a34a" },
+              { en: "Peanuts", es: "Cacahuetes", icon: "🥜", bg: "#92400e" },
+              { en: "Milk", es: "Lácteos", icon: "🥛", bg: "#2563eb" },
+              { en: "Sulphite", es: "Sulfitos", icon: "⚗️", bg: "#9f1239" },
+              { en: "Soya", es: "Soja", icon: "🫘", bg: "#15803d" },
+              { en: "Lupins", es: "Altramuces", icon: "🌼", bg: "#a16207" },
+            ].map((allergen, i) => (
+              <div key={i} className="flex flex-col items-center gap-1">
+                <div
+                  className="w-9 h-9 rounded-full flex items-center justify-center text-lg"
+                  style={{ background: allergen.bg }}
+                >
+                  {allergen.icon}
+                </div>
+                <span className="text-white/50 text-[7px] text-center uppercase leading-tight">
+                  {lang === "en" ? allergen.en : allergen.es}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
 
