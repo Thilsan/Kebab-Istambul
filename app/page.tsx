@@ -392,8 +392,8 @@ export default function Home() {
                 {
                   num: 1,
                   items: [
-                    { name: "ROLLO\nKEBAB", img: "/rollo.png" },
-                    { name: "PITA\nKEBAB", img: "/pita.png" },
+                    { name: "ROLLO\nKEBAB", img: "/7.png" },
+                    { name: "PITA\nKEBAB", img: "/8.png" },
                   ],
                   desc1: { en: "BEEF OR CHICKEN", es: "TERNERA O POLLO" } as BilingualStr,
                   desc2: "PATATAS FRITAS + BEBIDA",
@@ -402,8 +402,8 @@ export default function Home() {
                 {
                   num: 2,
                   items: [
-                    { name: "PLATO\nKEBAB", img: null as string | null },
-                    { name: "PLATO\nSULTAN", img: null as string | null },
+                    { name: "PLATO\nKEBAB", img: "/5.png" },
+                    { name: "PLATO\nSULTAN", img: "/6.png" },
                   ],
                   desc1: { en: "BEEF OR CHICKEN", es: "TERNERA O POLLO" } as BilingualStr,
                   desc2: { en: "RICE OR SALAD\nCHIPS + DRINK", es: "ARROZ O ENSALADA\nPATATAS FRITAS + BEBIDA" } as BilingualStr,
@@ -412,8 +412,8 @@ export default function Home() {
                 {
                   num: 3,
                   items: [
-                    { name: "LAHMACUM\nKEBAB", img: null as string | null },
-                    { name: "HAMBU-\nRGUESA", img: "/hamburguesa.png" },
+                    { name: "LAHMACUM\nKEBAB", img: "/2.png" },
+                    { name: "HAMBU-\nRGUESA", img: "/1.png" },
                   ],
                   desc1: { en: "BEEF OR CHICKEN", es: "TERNERA O POLLO" } as BilingualStr,
                   desc2: "PATATAS FRITAS + BEBIDA",
@@ -422,8 +422,8 @@ export default function Home() {
                 {
                   num: 4,
                   items: [
-                    { name: "ALITAS\nPOLLO", img: null as string | null },
-                    { name: "NUGGETS\nDE POLLO", img: null as string | null },
+                    { name: "ALITAS\nPOLLO", img: "/3.png" },
+                    { name: "NUGGETS\nDE POLLO", img: "/4.png" },
                   ],
                   desc1: null as BilingualStr,
                   desc2: "PATATAS FRITAS + BEBIDA",
@@ -458,10 +458,10 @@ export default function Home() {
                         <img
                           src={item.img}
                           alt={item.name.replace("\n", " ")}
-                          className="w-full h-14 object-contain"
+                          className="w-full h-24 object-contain"
                         />
                       ) : (
-                        <div className="w-full h-14 flex items-center justify-center">
+                        <div className="w-full h-24 flex items-center justify-center">
                           <span className="text-white/20 text-3xl">🍽️</span>
                         </div>
                       )}
@@ -836,78 +836,104 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Gracias por Su Visita */}
-        <div className="py-6 text-center">
-          <p className="text-white/90 text-xl sm:text-2xl font-semibold italic leading-snug">
-            Gracias por Su Visita
-          </p>
-          <p className="text-[#c0392b] text-xl sm:text-2xl font-semibold italic mt-0.5 leading-snug">
-            Thanks for Your Visit
-          </p>
-          <div className="flex items-center justify-center gap-3 mt-3">
-            <div className="h-px w-16 bg-[#c8a45a]/50" />
-            <span className="text-[#c8a45a] text-base">✦</span>
-            <div className="h-px w-16 bg-[#c8a45a]/50" />
-          </div>
-          <p className="text-white/40 text-[10px] tracking-widest uppercase mt-3 leading-relaxed">
-            {lang === "en"
-              ? "For the characteristics of our establishment, all our products may contain allergens. Ask our staff for information."
-              : "Por las características de nuestro establecimiento, todos nuestros productos son susceptibles de contener algún tipo de alérgeno. Solicite información a nuestro personal."}
-          </p>
-        </div>
-
-        {/* Allergen Information */}
-        <div className="border border-white/10 rounded-sm overflow-hidden bg-[#111] p-4">
-          {/* Disclaimer text — two columns, EN top, ES below */}
-          <div className="grid grid-cols-2 gap-3 mb-3">
-            <p className="text-white/65 text-[9px] italic leading-relaxed">
-              For the characteristics of installation, handling and development of the establishment, all our products are likely to contain directly or through of cross contamination some type of allergen.
-            </p>
-            <p className="text-white/65 text-[9px] text-right font-semibold uppercase leading-relaxed">
-              This establishment has information on allergies and intolerances food. Regulation (EU) 1169/2011. Ask for information to our staff.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 gap-3 mb-5">
-            <p className="text-white/40 text-[9px] italic leading-relaxed">
-              Por las características de instalación, manipulación y elaboración del establecimiento, todos nuestros productos son susceptibles de contener de manera directa o a través de contaminación cruzada algún tipo de alérgeno.
-            </p>
-            <p className="text-white/40 text-[9px] text-right font-semibold uppercase leading-relaxed">
-              Este establecimiento dispone de información sobre alergias e intolerancias alimentarias. Reglamento (EU) 1169/2011. Solicite información a nuestro personal.
-            </p>
-          </div>
-
-          {/* Allergen icons */}
-          <div className="grid grid-cols-7 gap-2">
-            {[
-              { en: "Crustacean", es: "Crustáceos", icon: "🦐", bg: "#3b82f6" },
-              { en: "Sesame", es: "Sésamo", icon: "🌿", bg: "#6b7280" },
-              { en: "Nuts", es: "Frutos de Cáscara", icon: "🌰", bg: "#dc2626" },
-              { en: "Gluten", es: "Gluten", icon: "🌾", bg: "#f97316" },
-              { en: "Egg", es: "Huevo", icon: "🥚", bg: "#ca8a04" },
-              { en: "Fish", es: "Pescado", icon: "🐟", bg: "#0284c7" },
-              { en: "Shellfish", es: "Moluscos", icon: "🐚", bg: "#38bdf8" },
-              { en: "Mustard", es: "Mostaza", icon: "🌻", bg: "#ea580c" },
-              { en: "Celery", es: "Apio", icon: "🥬", bg: "#16a34a" },
-              { en: "Peanuts", es: "Cacahuetes", icon: "🥜", bg: "#92400e" },
-              { en: "Milk", es: "Lácteos", icon: "🥛", bg: "#2563eb" },
-              { en: "Sulphite", es: "Sulfitos", icon: "⚗️", bg: "#9f1239" },
-              { en: "Soya", es: "Soja", icon: "🫘", bg: "#15803d" },
-              { en: "Lupins", es: "Altramuces", icon: "🌼", bg: "#a16207" },
-            ].map((allergen, i) => (
-              <div key={i} className="flex flex-col items-center gap-1">
-                <div
-                  className="w-9 h-9 rounded-full flex items-center justify-center text-lg"
-                  style={{ background: allergen.bg }}
-                >
-                  {allergen.icon}
-                </div>
-                <span className="text-white/50 text-[7px] text-center uppercase leading-tight">
-                  {lang === "en" ? allergen.en : allergen.es}
-                </span>
-              </div>
+          {/* Tapas images */}
+          <div className="bg-[#111] grid grid-cols-3 gap-1 p-2">
+            {["tapas1","tapas2","tapas3","tapas4","tapas5","tapas6"].map((name) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                key={name}
+                src={`/${name}.png`}
+                alt={name}
+                className="w-full h-24 object-cover rounded-sm"
+              />
             ))}
+          </div>
+        </div>
+
+        {/* Gracias por Su Visita — Thank You Section */}
+        <div className="bg-[#1a0a0a] border border-white/10 rounded-sm overflow-hidden">
+          {/* Heading */}
+          <div className="py-5 text-center px-4">
+            <p className="text-white/90 text-2xl sm:text-3xl font-semibold italic leading-snug">
+              Gracias por Su Visita
+            </p>
+            <p className="text-[#c0392b] text-2xl sm:text-3xl font-semibold italic mt-0.5 leading-snug">
+              – Thanks for Your Visit
+            </p>
+          </div>
+
+          {/* Two-column: left image + right allergen info */}
+          <div className="flex flex-row items-stretch">
+            {/* Left: kebab spit image */}
+            <div className="w-2/5 shrink-0">
+              <img
+                src="/footer1.jpeg"
+                alt="Kebab spit"
+                className="w-full h-full object-cover"
+                style={{ minHeight: 220 }}
+              />
+            </div>
+
+            {/* Right: allergen text + icons + footer2 image */}
+            <div className="flex-1 p-3 flex flex-col justify-between">
+              {/* Disclaimer text */}
+              <div className="grid grid-cols-2 gap-2 mb-2">
+                <p className="text-white/65 text-[8px] italic leading-relaxed">
+                  For the characteristics of installation, handling and development of the establishment, all our products are likely to contain directly or through of cross contamination some type of allergen.
+                </p>
+                <p className="text-white/65 text-[8px] font-semibold uppercase leading-relaxed">
+                  This establishment has information on allergies and intolerances food. Regulation (EU) 1169/2011. Ask for information to our staff.
+                </p>
+              </div>
+              <div className="grid grid-cols-2 gap-2 mb-3">
+                <p className="text-white/40 text-[8px] italic leading-relaxed">
+                  Por las características de instalación, manipulación y elaboración del establecimiento, todos nuestros productos son susceptibles de contener de manera directa o a través de contaminación cruzada algún tipo de alérgeno.
+                </p>
+                <p className="text-white/40 text-[8px] font-semibold uppercase leading-relaxed">
+                  Este establecimiento dispone de información sobre alergias e intolerancias alimentarias. Reglamento (EU) 1169/2011. Solicite información a nuestro personal.
+                </p>
+              </div>
+
+              {/* Allergen icons */}
+              <div className="grid grid-cols-7 gap-1 mb-3">
+                {[
+                  { en: "Crustacean", es: "Crustáceos", icon: "🦐", bg: "#3b82f6" },
+                  { en: "Sesame", es: "Sésamo", icon: "🌿", bg: "#6b7280" },
+                  { en: "Nuts", es: "Frutos de Cáscara", icon: "🌰", bg: "#dc2626" },
+                  { en: "Gluten", es: "Gluten", icon: "🌾", bg: "#f97316" },
+                  { en: "Egg", es: "Huevo", icon: "🥚", bg: "#ca8a04" },
+                  { en: "Fish", es: "Pescado", icon: "🐟", bg: "#0284c7" },
+                  { en: "Shellfish", es: "Moluscos", icon: "🐚", bg: "#38bdf8" },
+                  { en: "Mustard", es: "Mostaza", icon: "🌻", bg: "#ea580c" },
+                  { en: "Celery", es: "Apio", icon: "🥬", bg: "#16a34a" },
+                  { en: "Peanuts", es: "Cacahuetes", icon: "🥜", bg: "#92400e" },
+                  { en: "Milk", es: "Lácteos", icon: "🥛", bg: "#2563eb" },
+                  { en: "Sulphite", es: "Sulfitos", icon: "⚗️", bg: "#9f1239" },
+                  { en: "Soya", es: "Soja", icon: "🫘", bg: "#15803d" },
+                  { en: "Lupins", es: "Altramuces", icon: "🌼", bg: "#a16207" },
+                ].map((allergen, i) => (
+                  <div key={i} className="flex flex-col items-center gap-0.5">
+                    <div
+                      className="w-8 h-8 rounded-full flex items-center justify-center text-base"
+                      style={{ background: allergen.bg }}
+                    >
+                      {allergen.icon}
+                    </div>
+                    <span className="text-white/50 text-[6px] text-center uppercase leading-tight">
+                      {lang === "en" ? allergen.en : allergen.es}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Footer2 image at bottom of right column */}
+              <img
+                src="/footer2.png"
+                alt="Roasted chicken"
+                className="w-full object-contain"
+                style={{ maxHeight: 130 }}
+              />
+            </div>
           </div>
         </div>
 
